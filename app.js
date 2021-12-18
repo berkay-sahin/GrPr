@@ -1,21 +1,63 @@
 const express = require('express');
-//const { use, path } = require('express/lib/application');
+const mongoose = require('mongoose');
+const ejs = require('ejs');
 const http = require('http');
-const path = require('path')
-
+const path = require('path');
 const app = express();
+const User = require('./models/User');
+const { userInfo } = require('os');
+
 app.use(express.static('public'));
+app.set('views', './views/gp1');
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
+// CONNECT DB
+mongoose.connect('mongodb://localhost/pcat-test-db', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 const deneme = (req, res, next) => {
   console.log('zorroror');
   next();
 };
 app.use(deneme);
-app.use(deneme);
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+app.get('/car', (req, res) => {
+  res.render('car');
+});
+app.get('/house', (req, res) => {
+  res.render('house');
+});
+app.get('/', (req, res) => {
+  res.render('index');
+});
+app.get('/profile',async (req, res) => {
+  const usr = await User.find({})
+  res.render('profile',{
+    usr
+  });
+});
+app.get('/sign-in', (req, res) => {
+  res.render('sign-in');
+});
+app.get('/sign-up', (req, res) => {
+  res.render('sign-up');
+});
+app.get('/support', (req, res) => {
+  res.render('support');
+});
+app.post('/user',async (req, res) => {
+  await User.create(req.body);
+  res.redirect('/profile');
+});
+
 
 const PORT = 3000;
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'temp/gp1/index.html'));
-});
+
 app.listen(PORT, () => {
   console.log(`sunucu ${PORT} başlatıldı`);
 });

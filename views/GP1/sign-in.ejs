@@ -13,21 +13,7 @@
   <body class="text-center">
 <!--Nav Bar Start-->
 
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom mt-3 ">
- 
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none ms-2 me-2">
-        <span class="fs-4">
-         <a style="text-decoration: none; color: black; font-size:x-large;" href="index.html">House & Cars</a>
-        </span>
-      </a>
-
-    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-    <a class="me-3 py-2 text-dark text-decoration-none ms-2" href="index.html">Main Page</a>
-    <a class="me-3 py-2 text-dark text-decoration-none" href="profile.html">Profile</a>
-    <a class="me-3 py-2 text-dark text-decoration-none" href="support.html">Support</a>
-    <a class="py-2 text-dark text-decoration-none me-2" href="sign-in.html">Sign-in</a>
-    </nav>
-    </div>
+<%- include('partials/_navbar') -%>
 <!--Nav Bar End-->  
 <!--Sign in Start-->
     <div class="container" style="margin-top: 10%;">
@@ -52,7 +38,7 @@
             </label>
           
           <div>
-            <a style="text-decoration: none;" href="sign-up.html">Sign-up</a>
+            <a style="text-decoration: none;" href="/sign-up">Sign-up</a>
           </div>          
           
           </div>
@@ -63,21 +49,7 @@
 <!--Sign in End-->
  
 <div class="container fixed-bottom"> <!--Footer-->
-  <footer class=" d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="index.html" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        <img class=" navbar-brand" src="img\40062606.jpg" alt="" width="70" height="70">
-      </a>
-      <span class="text-muted fs-4 font-size-xl">House&Cars</span>
-    </div>
-
-    <ul>
-      <li class="ms-1" style="list-style: none; float: left;"><a href=""><img src="https://img.icons8.com/color/48/000000/twitter--v2.png"/></a></li>
-      <li class="ms-1" style="list-style: none; float: left;"><a href=""><img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png"/></a></li>
-      <li class="ms-1" style="list-style: none; float: left;"><a href=""><img src="https://img.icons8.com/color/48/000000/facebook-new.png"/></a></li>
-    </ul>
-    
-  </footer>
+  <%- include('partials/_footer') -%>
 </div>      <!--/Footer-->
  
  
