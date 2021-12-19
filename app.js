@@ -5,6 +5,8 @@ const http = require('http');
 const path = require('path');
 const app = express();
 const User = require('./models/User');
+const Car = require('./models/Car');
+
 const { userInfo } = require('os');
 
 app.use(express.static('public'));
@@ -23,8 +25,11 @@ const deneme = (req, res, next) => {
 };
 app.use(deneme);
 
-app.get('/', (req, res) => {
-  res.render('index');
+app.get('/', async (req, res) => {
+  const adverts = await Car.find({})
+  res.render('index',{
+    adverts,
+  });
 });
 app.get('/car', (req, res) => {
   res.render('car');
@@ -32,29 +37,42 @@ app.get('/car', (req, res) => {
 app.get('/house', (req, res) => {
   res.render('house');
 });
-app.get('/', (req, res) => {
-  res.render('index');
-});
-app.get('/profile',async (req, res) => {
-  const usr = await User.find({})
-  res.render('profile',{
-    usr
+
+
+app.get('/profile', async (req, res) => {
+  const usr = await User.find({});
+  res.render('profile', {
+    usr,
   });
 });
+
+app.get('/addadvert', (req, res) => {
+  res.render('advert');
+});
+
 app.get('/sign-in', (req, res) => {
   res.render('sign-in');
 });
 app.get('/sign-up', (req, res) => {
   res.render('sign-up');
 });
+app.get('/caradvert', (req, res) => {
+  res.render('caradvert');
+});
+app.get('/houseadvert', (req, res) => {
+  res.render('houseadvert');
+});
 app.get('/support', (req, res) => {
   res.render('support');
 });
-app.post('/user',async (req, res) => {
+app.post('/user', async (req, res) => {
   await User.create(req.body);
   res.redirect('/profile');
 });
-
+app.post('/addcar', async (req, res) => {
+  await Car.create(req.body);
+  res.redirect('/');
+});
 
 const PORT = 3000;
 
