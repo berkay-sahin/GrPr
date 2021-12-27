@@ -1,19 +1,52 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const http = require('http');
 const path = require('path');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const app = express();
-const User = require('./models/User');
-const Car = require('./models/Car');
-
+const fs = require('fs');
+const fileUpload = require('express-fileupload');
 const { userInfo } = require('os');
+const pageRoute = require('./routes/pageRoute');
+const userRoute = require('./routes/userRoute');
+const advertRoute = require('./routes/advertRoute');
+const categoryRoute = require('./routes/categoryRoute');
+const houseRoute = require('./routes/houseRouter');
+const Car = require('./models/Car');
+const House = require('./models/House');
+const User = require('./models/User');
 
+//GLOBAL VARİABLES
+global.userIN = null;
+
+//MIDDLEWARES
+
+app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
 app.use(express.static('public'));
+app.use(
+  session({
+    secret: 'my_keyboard_cat', // Buradaki texti değiştireceğiz.
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/pcat-test-db' })
+  })
+);
+app.use('*', (req, res, next) => {
+  userIN = req.session.userID;
+  next();
+});
+app.use('/', pageRoute);
 app.set('views', './views/gp1');
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
+app.use('/users', userRoute);
+app.use('/addadvert', advertRoute);
+app.use('/car', advertRoute);
+app.use('/house', houseRoute);
 // CONNECT DB
+
 mongoose.connect('mongodb://localhost/pcat-test-db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -25,53 +58,41 @@ const deneme = (req, res, next) => {
 };
 app.use(deneme);
 
-app.get('/', async (req, res) => {
-  const adverts = await Car.find({})
-  res.render('index',{
-    adverts,
-  });
-});
-app.get('/car', (req, res) => {
-  res.render('car');
-});
-app.get('/house', (req, res) => {
-  res.render('house');
-});
+//POST PARTS
+//ARABA VERİSİ EKLEME
 
-
-app.get('/profile', async (req, res) => {
-  const usr = await User.find({});
-  res.render('profile', {
-    usr,
-  });
-});
-
-app.get('/addadvert', (req, res) => {
-  res.render('advert');
-});
-
-app.get('/sign-in', (req, res) => {
-  res.render('sign-in');
-});
-app.get('/sign-up', (req, res) => {
-  res.render('sign-up');
-});
-app.get('/caradvert', (req, res) => {
-  res.render('caradvert');
-});
-app.get('/houseadvert', (req, res) => {
-  res.render('houseadvert');
-});
-app.get('/support', (req, res) => {
-  res.render('support');
-});
-app.post('/user', async (req, res) => {
-  await User.create(req.body);
-  res.redirect('/profile');
-});
 app.post('/addcar', async (req, res) => {
-  await Car.create(req.body);
-  res.redirect('/');
+  const uploadDir = 'public/uploads';
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+  }
+  let uploadedImg = req.files.ilanfoto;
+  let uploadPath = __dirname + '/public/uploads/' + uploadedImg.name;
+  uploadedImg.mv(uploadPath, async () => {
+    await Car.create({
+      ...req.body,
+      ilanfoto: '/uploads/' + uploadedImg.name,
+    });
+    res.redirect('/');
+  });
+});
+
+//EV VERİSİ EKLEME
+
+app.post('/addhouse', async (req, res) => {
+  const uploadDir = 'public/uploads';
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+  }
+  let uploadedImg = req.files.evfoto;
+  let uploadPath = __dirname + '/public/uploads/' + uploadedImg.name;
+  uploadedImg.mv(uploadPath, async () => {
+    await House.create({
+      ...req.body,
+      evfoto: '/uploads/' + uploadedImg.name,
+    });
+    res.redirect('/');
+  });
 });
 
 const PORT = 3000;

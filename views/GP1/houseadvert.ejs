@@ -23,78 +23,83 @@
           </div>      <!--Side Bar End-->
         
             <div class="col-8">
+
+              <form method="post" action="/addhouse" encType="multipart/form-data">
+
                 <div class="row">
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="/">
+                    <input type="text" name="evbaslik" class="form-control" id="floatingInput" placeholder="/">
                     <label class="ms-2" for="floatingInput">İlan Başlığı</label>
                   </div>
             </div>
             <div class="col-8 ">
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">İlanınıza Resim Ekleyin</label>
-                    <input class="form-control" type="file" id="formFile">
+                    <label for="formFile"  class="form-label">İlanınıza Resim Ekleyin</label>
+                    <input name="evfoto" class="form-control"  type="file" id="formFile">
                   </div>
             </div>
             <div class="col-12">
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="/">
+                    <input type="text" name="evaciklama" class="form-control" id="floatingInput" placeholder="/">
                     <label class="ms-2" for="floatingInput">İlan Açıklaması</label>
                   </div>
             </div>
             <div class="row">
                 <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Emlak Tipi" aria-label="Emlak Tipi">
+                    <input type="text" name="emlaktipi" class="form-control" placeholder="Emlak Tipi" aria-label="Emlak Tipi">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Tür" aria-label="Tür">
+                    <input type="text" name="tür" class="form-control" placeholder="Tür" aria-label="Tür">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Boyut" aria-label="Boyut">
+                    <input type="text" name="boyut" class="form-control" placeholder="Boyut" aria-label="Boyut">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Oda Sayısı" aria-label="Oda Sayısı">
+                    <input type="text" name="odasayisi" class="form-control" placeholder="Oda Sayısı" aria-label="Oda Sayısı">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Kat Sayısı/Bulunduğu Kat" aria-label="Kat Sayısı/Bulunduğu Kat">
+                    <input type="text" class="form-control" name="katsayisi" placeholder="Kat Sayısı/Bulunduğu Kat" aria-label="Kat Sayısı/Bulunduğu Kat">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Şehir" aria-label="Şehir">
+                    <input type="text" class="form-control" name="sehir" placeholder="Şehir" aria-label="Şehir">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Mahalle" aria-label="Mahalle">
+                    <input type="text" class="form-control" name="mahalle" placeholder="Mahalle" aria-label="Mahalle">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Eşyalı" aria-label="Eşyalı">
+                    <input type="text" class="form-control" name="esya" placeholder="Eşyalı" aria-label="Eşyalı">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Aidat" aria-label="Aidat">
+                    <input type="text" class="form-control"  name="aidat" placeholder="Aidat" aria-label="Aidat">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Bina Yaşı" aria-label="Bina Yaşı">
+                    <input type="text" class="form-control" name="binayasi" placeholder="Bina Yaşı" aria-label="Bina Yaşı">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Balkon Sayısı" aria-label="Balkon Sayısı">
+                    <input type="text" class="form-control" name="balkonsayisi" placeholder="Balkon Sayısı" aria-label="Balkon Sayısı">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Baktığı Cephe" aria-label="Baktığı Cephe">
+                    <input type="text" class="form-control" name="cephe" placeholder="Baktığı Cephe" aria-label="Baktığı Cephe">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Bahçe" aria-label="Bahçe">
+                    <input type="text" class="form-control" name="bahce" placeholder="Bahçe" aria-label="Bahçe">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Isıtma Türü" aria-label="Isıtma Türü">
+                    <input type="text" class="form-control" name="isinma" placeholder="Isıtma Türü" aria-label="Isıtma Türü">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Kimden" aria-label="Kimden">
+                    <input type="text" class="form-control" name="kimden" placeholder="Kimden" aria-label="Kimden">
                   </div>
                   <div class="col-6 mt-2">
-                    <input type="text" class="form-control" placeholder="Depreme Dayanaklılık" aria-label="Depreme Dayanaklılık">
+                    <input type="text" class="form-control" name="deprem" placeholder="Depreme Dayanaklılık" aria-label="Depreme Dayanaklılık">
                   </div>
 
             </div>
             <div class="d-grid gap-2 mt-5" style="margin-bottom: 100px;">
-                <button class="btn btn-primary" type="button">İlanı Tamamla</button>
+                <button class="btn btn-primary" type="submit">İlanı Tamamla</button>
               </div>
+            </form>               
+             
             </div>
         </div>
       </div>        <!--/Row-->

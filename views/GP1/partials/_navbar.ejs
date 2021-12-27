@@ -7,10 +7,22 @@
     </a>
   
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      
       <a class="me-3 py-2 text-dark text-decoration-none" href="/addadvert"> + Add Advert</a>
       <a class="me-3 py-2 text-dark text-decoration-none ms-2" href="/">Main Page</a>
-      <a class="me-3 py-2 text-dark text-decoration-none" href="/profile">Profile</a>
+     
       <a class="me-3 py-2 text-dark text-decoration-none" href="/support">Support</a>
-      <a class="py-2 text-dark text-decoration-none me-2" href="/sign-in">Sign-in</a>
+      <% if(!userIN) { %> 
+
+        <a class="py-2 text-dark text-decoration-none me-2" href="/sign-in">Sign-in</a>
+        
+        <% } %>
+        <% if(userIN) { %> 
+          <a class="me-3 py-2 text-dark text-decoration-none" href="/profile">Profile</a>
+          <a class="py-2 text-dark text-decoration-none me-2" href="users/sign-out">Sign-out</a>
+          
+          <% } %>
+      
+
     </nav>
   </div>

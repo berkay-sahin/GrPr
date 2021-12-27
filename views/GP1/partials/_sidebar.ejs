@@ -36,8 +36,18 @@
         </button>
   <div class="collapse" id="account-collapse">
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li><a href="profile.html" class="link-dark rounded">Profile</a></li>
-      <li><a href="#" class="link-dark rounded">Sign out</a></li>
+      <% if(userIN) { %> 
+           <li><a href="/profile" class="link-dark rounded">Profile</a></li>
+           <li><a href="users/sign-out" class="link-dark rounded">Sign out</a></li>
+          
+        <% } %>
+        <% if(!userIN) { %> 
+      
+          <li><a href="/sign-in" class="link-dark rounded">Sign in</a></li>
+         
+       <% } %>
+
+     
     </ul>
   </div>
       </li>

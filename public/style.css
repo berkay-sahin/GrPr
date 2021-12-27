@@ -17,6 +17,12 @@ body {
     overflow-y: hidden;
   }
   
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    }
+
+  
   .b-example-divider {
     flex-shrink: 0;
     width: 1.5rem;
