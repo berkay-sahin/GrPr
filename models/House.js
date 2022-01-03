@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Houses = new Schema({
 
   ilanbaslik: String,
-  ilanfoto: String,
+  ilanfoto: Array,
   evaciklama: String,
   ilansahibi: String,
   phone:String,

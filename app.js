@@ -18,6 +18,7 @@ const houseRoute = require('./routes/houseRouter');
 const Car = require('./models/Car');
 const House = require('./models/House');
 const User = require('./models/User');
+const { captureRejections } = require('connect-mongo');
 
 //GLOBAL VARİABLES
 global.userIN = null;
@@ -59,9 +60,79 @@ const deneme = (req, res, next) => {
 };
 app.use(deneme);
 
-//POST PARTS
-//ARABA VERİSİ EKLEME
 
+
+// POST CAR
+
+app.post('/addcar', async(req, res) => {
+  const car = new Car({
+   ...req.body
+  });
+
+  const uploadDir = "public/uploads";
+
+  if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+
+  const images = [];
+
+  req.files.ilanfoto = !req.files.ilanfoto.length
+    ? [req.files.ilanfoto]
+    : req.files.ilanfoto;
+  for (let i = 0; i < req.files.ilanfoto.length; i++) {
+    const ilanfoto = req.files.ilanfoto[i];
+    let uploadPath = __dirname + "/public/uploads/" + ilanfoto.name;
+
+    await new Promise((resolve) => {
+      ilanfoto.mv(uploadPath, (err) => {
+        if (err) throw err;
+        console.log(ilanfoto);
+        if (!err) images.push(`/uploads/${ilanfoto.name}`);
+        resolve(true);
+      });
+    });
+  }
+  car.ilanfoto = images;
+  await car.save();
+  res.redirect('/');
+});
+
+//POST HOUSE
+
+app.post('/addhouse', async(req, res) => {
+  const house = new House({
+   ...req.body
+  });
+
+  const uploadDir = "public/uploads";
+
+  if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+
+  const images = [];
+
+  req.files.ilanfoto = !req.files.ilanfoto.length
+    ? [req.files.ilanfoto]
+    : req.files.ilanfoto;
+  for (let i = 0; i < req.files.ilanfoto.length; i++) {
+    const ilanfoto = req.files.ilanfoto[i];
+    let uploadPath = __dirname + "/public/uploads/" + ilanfoto.name;
+
+    await new Promise((resolve) => {
+      ilanfoto.mv(uploadPath, (err) => {
+        if (err) throw err;
+        console.log(ilanfoto);
+        if (!err) images.push(`/uploads/${ilanfoto.name}`);
+        resolve(true);
+      });
+    });
+  }
+  house.ilanfoto = images;
+  await house.save();
+  res.redirect('/');
+});
+
+  //POST PARTS
+//ARABA VERİSİ EKLEME
+/*
 app.post('/addcar', async (req, res) => {
   const uploadDir = 'public/uploads';
   if (!fs.existsSync(uploadDir)) {
@@ -76,7 +147,9 @@ app.post('/addcar', async (req, res) => {
     });
     res.redirect('/');
   });
-}); 
+}); */
+
+//MULTER BAŞLANGIÇ
 /*
 var storage = multer.diskStorage({
   destination: function (request, file, callback) {
@@ -88,12 +161,14 @@ var storage = multer.diskStorage({
   }
 });
 
-// Function to upload project images
 var upload = multer({storage: storage}) 
 */
 
-//EV VERİSİ EKLEME
 
+// MULTER BİTİŞ
+
+//EV VERİSİ EKLEME
+/*
 app.post('/addhouse', async (req, res) => {
   const uploadDir = 'public/uploads';
   if (!fs.existsSync(uploadDir)) {
@@ -108,7 +183,9 @@ app.post('/addhouse', async (req, res) => {
     });
     res.redirect('/');
   });
-});
+});*/
+
+
 
 const PORT = 3000;
 

@@ -34,15 +34,21 @@
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="<%=car.ilanfoto[0]%>"class="img-fluid d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://picsum.photos/200/260" class="img-fluid d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://picsum.photos/200/260" class="img-fluid d-block w-100" alt="...">
-              </div>
+              
+                <div class="carousel-item active">
+                  <img src="<%=car.ilanfoto[0]%>"class="img-fluid d-block w-100" alt="...">
+                </div>
+                <% for (let i=1 ; i<=(car.ilanfoto.length)-1; i++) { %>
+                <div class="carousel-item">
+                  <img src="<%=car.ilanfoto[i]%>"class="img-fluid d-block w-100" alt="...">
+                </div>
+                  <% } %>
+                
+                 
+                
+
+              
+              
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -29,7 +29,7 @@
       <h3>Tarlalar</h3>
       <% for (let i=(houses.length) - 1 ; i >= 0; i--) { %>
         <div class="col-3">
-          <a href="house/<%=houses[i].slug %>"style="text-decoration: none;"><img src="<%=houses[i].ilanfoto%>" alt="" class="img-fluid img-thumbnail">
+          <a href="house/<%=houses[i].slug %>"style="text-decoration: none;"><img src="<%=houses[i].ilanfoto[0]%>" alt="" class="img-fluid img-thumbnail">
            <figcaption class="fs-5"style="color:black;"> <%= houses[i].ilanbaslik %></figcaption>
           </a>
         </div>
