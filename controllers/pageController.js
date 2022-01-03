@@ -51,6 +51,25 @@ exports.getHouse = (req, res) => {
     })
   };
 
+  exports.getOtomobil = (req, res) => {
+    
+    res.status(200).render('otomobil',{
+        page_name:'otomobil',
+    })
+  };
+  exports.getSuv = (req, res) => {
+    
+    res.status(200).render('suv',{
+        page_name:'suv',
+    })
+  };
+  exports.getMotor = (req, res) => {
+    
+    res.status(200).render('motor',{
+        page_name:'motor',
+    })
+  };
+
 
 
 

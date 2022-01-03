@@ -8,5 +8,6 @@ router.route('/addcar').post(advertController.createCarAdvert);
 router.route('/addhouse').post(advertController.createHouseAdvert); */
 
 router.route('/:slug').get(advertController.getCar);
+router.route('/addfavcar').post(advertController.addFavCar);
 router.route('/users/sign-out').get(userController.logoutUser);
 module.exports = router;

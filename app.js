@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const app = express();
@@ -75,7 +76,21 @@ app.post('/addcar', async (req, res) => {
     });
     res.redirect('/');
   });
+}); 
+/*
+var storage = multer.diskStorage({
+  destination: function (request, file, callback) {
+    callback(null, '/public/uploads/');
+  },
+  filename: function (request, file, callback) {
+    console.log(file);
+    callback(null, file.originalname)
+  }
 });
+
+// Function to upload project images
+var upload = multer({storage: storage}) 
+*/
 
 //EV VERİSİ EKLEME
 
@@ -84,12 +99,12 @@ app.post('/addhouse', async (req, res) => {
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
   }
-  let uploadedImg = req.files.evfoto;
+  let uploadedImg = req.files.ilanfoto;
   let uploadPath = __dirname + '/public/uploads/' + uploadedImg.name;
   uploadedImg.mv(uploadPath, async () => {
     await House.create({
       ...req.body,
-      evfoto: '/uploads/' + uploadedImg.name,
+      ilanfoto: '/uploads/' + uploadedImg.name,
     });
     res.redirect('/');
   });

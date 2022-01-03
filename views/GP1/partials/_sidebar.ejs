@@ -6,44 +6,44 @@
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button style="border: 1px black;"; class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          House
+          Emlak
         </button>
   <div class="collapse show" id="home-collapse">
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li><a href="/house" class="link-dark rounded">Estate</a></li>
-      <li><a href="/house" class="link-dark rounded">Plot</a></li>
-      <li><a href="/house" class="link-dark rounded">Shop</a></li>
+      <li><a href="/konut" class="link-dark rounded">Konut</a></li>
+      <li><a href="/tarla" class="link-dark rounded">Arsa</a></li>
+      <li><a href="/isyeri" class="link-dark rounded">İş Yeri</a></li>
     </ul>
   </div>
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-          Vehicle
+          Taşıt
         </button>
   <div class="collapse show" id="dashboard-collapse" >
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-      <li><a href="/car" class="link-dark rounded">Otomobile</a></li>
-      <li><a href="/car" class="link-dark rounded">SUV</a></li>
-      <li><a href="/car" class="link-dark rounded">Motorcycle</a></li>
-      <li><a href="/car" class="link-dark rounded">Sea Vehicle</a></li>
+      <li><a href="/otomobil" class="link-dark rounded">Otomobil</a></li>
+      <li><a href="/suv" class="link-dark rounded">SUV</a></li>
+      <li><a href="/motor" class="link-dark rounded">Motor</a></li>
+      <li><a href="/denizaraci" class="link-dark rounded">Deniz Aracı</a></li>
     </ul>
   </div>
       </li>
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Account
+          Hesap
         </button>
   <div class="collapse" id="account-collapse">
     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
       <% if(userIN) { %> 
-           <li><a href="/profile" class="link-dark rounded">Profile</a></li>
-           <li><a href="users/sign-out" class="link-dark rounded">Sign out</a></li>
+           <li><a href="/profile" class="link-dark rounded">Profil</a></li>
+           <li><a href="users/sign-out" class="link-dark rounded">Çıkış Yap</a></li>
           
         <% } %>
         <% if(!userIN) { %> 
       
-          <li><a href="/sign-in" class="link-dark rounded">Sign in</a></li>
+          <li><a href="/sign-in" class="link-dark rounded">Giriş yap</a></li>
          
        <% } %>
 

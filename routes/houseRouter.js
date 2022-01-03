@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.route('/:slug').get(houseController.getHouse);
 router.route('/users/sign-out').get(userController.logoutUser);
+router.route('/addfavhouse').post(houseController.addFavHouse);
 module.exports = router;

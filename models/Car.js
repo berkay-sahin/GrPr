@@ -12,6 +12,7 @@ const Cars = new Schema({
   marka: String,
   yıl: Number,
   km: Number,
+  yakit: String,
   bg: Number,
   tür: String,
   model: String,

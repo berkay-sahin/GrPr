@@ -1,13 +1,36 @@
 const User = require('../models/User');
+const House = require('../models/House');
+const Car = require('../models/Car');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+
 exports.getUser = async (req, res) => {
- const user = await User.findOne({_id:req.session.userID})
+ const user = await User.findOne({_id:req.session.userID}).populate('Car')
+ 
  res.status(200).render('profile',{
    user,
+   
    page_name: 'profile'
  })
 };
+
+exports.getUserCarAdv = async (req, res) => {
+  const user = await User.findOne({_id:req.session.userID})
+  res.status(200).render('caradvert',{
+    user,
+    page_name: 'caradvert'
+  })
+ };
+
+ exports.getUserHouseAdv = async (req, res) => {
+  const user = await User.findOne({_id:req.session.userID})
+  res.status(200).render('houseadvert',{
+    user,
+    page_name: 'houseadvert'
+  })
+ };
+
+
 
 exports.createUser = async (req, res) => {
   const users = await User.create(req.body);

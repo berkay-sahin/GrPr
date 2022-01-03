@@ -3,12 +3,13 @@ const { default: slugify } = require('slugify');
 const Schema = mongoose.Schema;
 const Houses = new Schema({
 
-  evbaslik: String,
-  evfoto: String,
+  ilanbaslik: String,
+  ilanfoto: String,
   evaciklama: String,
-  emlaktipi: String,
+  ilansahibi: String,
+  phone:String,
   tür: String,
-  boyut: Number,
+  boyut: String,
   odasayisi: Number,
   katsayisi: String,
   sehir: String,
@@ -22,7 +23,7 @@ const Houses = new Schema({
   bahce: String,
   isinma: String,
   kimden: String,
-  deprem: String,
+  
 
   dateCreated: {
     type: Date,
@@ -35,7 +36,7 @@ const Houses = new Schema({
 });
 
 Houses.pre('validate', function (next) {
-  this.slug = slugify(this.evbaslik, {
+  this.slug = slugify(this.ilanbaslik, {
     lower: true,
     strict: true,
   });
