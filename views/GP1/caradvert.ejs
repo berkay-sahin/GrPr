@@ -43,6 +43,7 @@
                     <label class="ms-2" for="floatingInput">İlan Açıklaması</label>
                   </div>
             </div>
+
             <div class="row">
               <div class="col-6 mt-2">
                 <% if(!userIN) { %> 
@@ -74,7 +75,11 @@
 
                 
               </div>
-              
+               
+              <div class="col-6 mt-2">
+                <input type="text"  name="ilanfiyat" class="form-control" placeholder="Fiyat" aria-label="Fiyat">
+              </div>
+                            
                 <div class="col-6 mt-2">
                     <input type="text"  name="tür" class="form-control" placeholder="Tür" aria-label="Tür">
                   </div>
@@ -111,6 +116,11 @@
                   </div>
                   <div class="col-6 mt-2">
                     <input type="text" name="motorhacmi" class="form-control" placeholder="Motor Hacmi" aria-label="Motor Hacmi">
+                  </div>
+                  <div class="col-6 mt-2">
+                  
+                    <input type="text"  name="ilanadress" class="form-control" value="<%= user.adress %>" placeholder="Adress" aria-label="Adress">
+
                   </div>
             </div>
             <div class="d-grid gap-2 mt-5" style="margin-bottom: 250px;">

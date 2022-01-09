@@ -5,8 +5,10 @@ const slug = require('slugify');
 const Schema = mongoose.Schema;
 const Cars = new Schema({
   ilanbaslik: String,
+  ilanfiyat:Number,
   ilanfoto: Array,
   ilanaciklama: String,
+  ilanadress:String,
   ilansahibi: String,
   telefon: String,
   marka: String,
